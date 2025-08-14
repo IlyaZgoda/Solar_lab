@@ -1,10 +1,10 @@
 ﻿using Solar_lab;
 
-PersonController PersonList = new PersonController();
+PersonController PersonList = new();
 string filePath = "save.txt";
-PersonList.LoadDataFromFileAsync(filePath);
+PersonList.LoadDataFromFile(filePath);
 
-PersonList.ShowUpcomingBdays();
+PersonList.ShowUpcomingBirthdays();
 
 while (true)
 {
@@ -16,11 +16,11 @@ while (true)
                 + "5 - редактирование ДР \n"
                 + "6 - сохранить в файл \n");
 
-    string input = Console.ReadLine();
-    int choice;
+    string? input = Console.ReadLine();
+
     Console.WriteLine();
 
-    if (int.TryParse(input, out choice))
+    if (int.TryParse(input, out int choice))
     {
         switch (choice)
         {
@@ -28,7 +28,7 @@ while (true)
                 PersonList.ShowList();
                 break;
             case 2:
-                PersonList.ShowUpcomingBdays();
+                PersonList.ShowUpcomingBirthdays();
                 break;
             case 3:
                 PersonList.AddPerson();
@@ -46,5 +46,5 @@ while (true)
                 Console.WriteLine("Неправильный ввод данных");
                 break;
         }
-    }   
+    }
 }
